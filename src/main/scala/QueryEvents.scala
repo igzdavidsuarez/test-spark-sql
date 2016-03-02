@@ -20,7 +20,8 @@ object QueryEvents {
       .option("password", "abbyl40L")
       .load()
 
-    dataframe_mysql.show()
+    dataframe_mysql.registerTempTable("ALL_ACTORS")
+    dataframe_mysql.sqlContext.sql("select * from ALL_ACTORS").collect().foreach(println)
 
     sc.stop()
 
